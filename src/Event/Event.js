@@ -10,17 +10,12 @@ let events = [
 const Event = (props) => {
   return(
     <div>
-      <input type="checkbox" checked={props.checked}> </input>
+      <input type="checkbox" checked={props.checked} />
       <div>{props.text}</div>
     </div>
   )
 }
 
-export let convertEvents = () => {
-  return (
-    events.map(() => (<Event props={events}/>))
-  )
-}
-
+export let convertEvents = events.map(() => (<Event props={events}/>))
 
 export default Event;
