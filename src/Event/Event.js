@@ -1,6 +1,6 @@
+import React from "react";
 
-
-let events = [
+export const events = [
   {checked:false, text: 'Do homework'},
   {checked:false, text: 'Cook dinner'},
   {checked:false, text: 'Cleen flat'},
@@ -15,7 +15,5 @@ const Event = (props) => {
     </div>
   )
 }
-
-export let convertEvents = events.map(() => (<Event props={events}/>))
 
 export default Event;
