@@ -1,0 +1,15 @@
+.navBar{
+  border-bottom: 2px solid #1C6EA4;
+  padding-bottom: 20px;
+}
+
+.phrase{
+  text-shadow: 2px 2px 2px #1C6EA4;
+  margin-right: 1000px;
+}
+
+.addButton{
+  float: right;
+  margin-top: -50px;
+  margin-right: 50px
+}
