@@ -27124,9 +27124,7 @@ const App = ()=>{
             } : it));
     };
     const onDeleteEvent = (event)=>{
-        setEvents(events.filter((ev)=>ev.text !== event ? {
-                ...ev
-            } : ev));
+        setEvents(events.filter((ev)=>ev.text !== event));
     };
     const onChangeArea = ()=>{
         return 0;
@@ -27220,9 +27218,9 @@ $RefreshReg$(_c, "NavBar");
   window.$RefreshSig$ = prevRefreshSig;
 }
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./navBar.module.css":"6Mkxe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6Mkxe":[function(require,module,exports) {
+module.exports["navBar"] = `Wa7cIW_navBar`;
 module.exports["phrase"] = `Wa7cIW_phrase`;
 module.exports["addButton"] = `Wa7cIW_addButton`;
-module.exports["navBar"] = `Wa7cIW_navBar`;
 
 },{}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {

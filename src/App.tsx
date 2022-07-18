@@ -22,7 +22,7 @@ export const App = () => {
     };
 
     const onDeleteEvent = (event: string) => {
-      setEvents(events.filter((ev)=>(ev.text !== event ? {...ev} : ev)));
+      setEvents(events.filter((ev)=>ev.text !== event));
     }
 
     const onChangeArea = () => {
