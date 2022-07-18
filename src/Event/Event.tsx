@@ -12,11 +12,15 @@ export interface EventProps {
     text: string;
 }
 
-const Event = (props: EventProps & {onChange: () => void}) => {
+const Event = (props: EventProps & 
+  {onChange: () => void} &
+  {onClick: () => void} &
+  {onChangeArea: () => void}) => {
   return(
     <div>
       <input type="checkbox" onChange={props.onChange} checked={props.checked} />
-      <div>{props.text}</div>
+      <textarea value={props.text} onChange={props.onChangeArea}/>
+      <button onClick={props.onClick}>delete</button>
     </div>
   )
 }

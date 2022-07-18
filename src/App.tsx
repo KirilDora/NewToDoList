@@ -2,7 +2,7 @@ import './App.css';
 import React, {useCallback, useState} from "react";
 import NavBar from './NavBar/NavBar';
 import ToDoList from './ToDoList/ToDoList';
-import {EventProps, initialEvents} from "~/Event/Event";
+import {EventProps, initialEvents} from "./Event/Event";
 
 
 export const App = () => {
@@ -21,10 +21,21 @@ export const App = () => {
         setEvents(events.map(it => it.text === event ? {...it, checked: !it.checked} : it));
     };
 
+    const onDeleteEvent = (event: string) => {
+      setEvents(events.filter((ev)=>(ev.text !== event ? {...ev} : ev)));
+    }
+
+    const onChangeArea = () => {
+      return 0;
+    }
+
     return (
         <div className="App">
             <NavBar onEventAdd={onAddEvent}/>
-            <ToDoList events={events} onChange={onEventChange}/>
+            <ToDoList events={events} 
+            onChange={onEventChange}
+            onChangeArea = {onChangeArea} 
+            onClick={onDeleteEvent}/>
         </div>
   );
 }

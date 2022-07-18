@@ -16,9 +16,11 @@ import Event, {EventProps} from "../Event/Event";
 interface ToDoListProps {
     events: EventProps[];
     onChange: (text: string) => void;
+    onClick: (text: string) => void;
+    onChangeArea: () => void;
 }
 
-const ToDoList: FC<ToDoListProps> = ({events, onChange}) => {
+const ToDoList: FC<ToDoListProps> = ({events, onChange, onClick, onChangeArea}) => {
     return(
       <>
           {events.sort((a, b) => {
@@ -32,6 +34,8 @@ const ToDoList: FC<ToDoListProps> = ({events, onChange}) => {
           }).map((event, inx) => (
               <Event
                   onChange={() => onChange(event.text)}
+                  onClick={() => onClick(event.text)}
+                  onChangeArea={()=>onChangeArea()}
                   key={`event-${inx}-${event.text}`}
                   {...event}
               />)
