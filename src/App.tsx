@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useCallback, useState} from "react";
+import React, {FormEvent, ReactEventHandler, useCallback, useState} from "react";
 import NavBar from './NavBar/NavBar';
 import ToDoList from './ToDoList/ToDoList';
 import {EventProps, initialEvents} from "./Event/Event";
@@ -25,8 +25,8 @@ export const App = () => {
       setEvents(events.filter((ev)=>ev.text !== event));
     }
 
-    const onChangeArea = () => {
-      return 0;
+    const onChangeArea = (event: string, e: FormEvent) => {
+      setEvents(events.map(ev => ev.text === event ? {...ev, text: e.target.value} : ev))
     }
 
     return (

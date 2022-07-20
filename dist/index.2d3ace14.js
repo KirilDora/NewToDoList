@@ -27126,8 +27126,11 @@ const App = ()=>{
     const onDeleteEvent = (event)=>{
         setEvents(events.filter((ev)=>ev.text !== event));
     };
-    const onChangeArea = ()=>{
-        return 0;
+    const onChangeArea = (event, e)=>{
+        setEvents(events.map((ev)=>ev.text === event ? {
+                ...ev,
+                text: e.target.value
+            } : ev));
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "App",
