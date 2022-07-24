@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, FormEvent} from 'react';
 import Event, {EventProps} from "../Event/Event";
 
 // const linearMap = function (elements, callback) {
@@ -17,7 +17,7 @@ interface ToDoListProps {
     events: EventProps[];
     onChange: (text: string) => void;
     onClick: (text: string) => void;
-    onChangeArea: () => void;
+    onChangeArea: (inx: number, ev: FormEvent) => void;
 }
 
 const ToDoList: FC<ToDoListProps> = ({events, onChange, onClick, onChangeArea}) => {
@@ -35,8 +35,8 @@ const ToDoList: FC<ToDoListProps> = ({events, onChange, onClick, onChangeArea}) 
               <Event
                   onChange={() => onChange(event.text)}
                   onClick={() => onClick(event.text)}
-                  onChangeArea={()=>onChangeArea()}
-                  key={`event-${inx}-${event.text}`}
+                  onChangeArea={(ev: FormEvent) => onChangeArea(inx, ev)}
+                  key={`event-${inx}`}
                   {...event}
               />)
           )}

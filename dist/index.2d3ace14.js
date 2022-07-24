@@ -27101,6 +27101,9 @@ var _s = $RefreshSig$();
 const App = ()=>{
     _s();
     const [events, setEvents] = (0, _react.useState)((0, _event.initialEvents));
+    (0, _react.useEffect)(()=>console.log(events), [
+        events
+    ]);
     const onAddEvent = (0, _react.useCallback)(()=>{
         const input = prompt("What you want to do?");
         if (!input) {
@@ -27126,8 +27129,10 @@ const App = ()=>{
     const onDeleteEvent = (event)=>{
         setEvents(events.filter((ev)=>ev.text !== event));
     };
-    const onChangeArea = (event, e)=>{
-        setEvents(events.map((ev)=>ev.text === event ? {
+    const onChangeArea = (inx, e)=>{
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        setEvents(events.map((ev, i)=>i === inx ? {
                 ...ev,
                 text: e.target.value
             } : ev));
@@ -27139,7 +27144,7 @@ const App = ()=>{
                 onEventAdd: onAddEvent
             }, void 0, false, {
                 fileName: "src/App.tsx",
-                lineNumber: 34,
+                lineNumber: 38,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _toDoListDefault.default), {
@@ -27149,17 +27154,17 @@ const App = ()=>{
                 onClick: onDeleteEvent
             }, void 0, false, {
                 fileName: "src/App.tsx",
-                lineNumber: 35,
+                lineNumber: 39,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/App.tsx",
-        lineNumber: 33,
+        lineNumber: 37,
         columnNumber: 9
     }, undefined);
 };
-_s(App, "8/rc62hlcrl/6/Owuh6wxp+Vi94=");
+_s(App, "K+iO276C8I7zDjYn/XvYjQ5enso=");
 _c = App;
 var _c;
 $RefreshReg$(_c, "App");
@@ -27169,7 +27174,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./App.css":"6n0o6","react":"21dqq","./NavBar/NavBar":"9dZ5b","./ToDoList/ToDoList":"dWtmV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Event/Event":"2QxPA"}],"6n0o6":[function() {},{}],"9dZ5b":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./App.css":"6n0o6","react":"21dqq","./NavBar/NavBar":"9dZ5b","./ToDoList/ToDoList":"dWtmV","./Event/Event":"2QxPA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6n0o6":[function() {},{}],"9dZ5b":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$c6ec = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27182,12 +27187,13 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _navBarModuleCss = require("./navBar.module.css");
+var _navBarModuleCssDefault = parcelHelpers.interopDefault(_navBarModuleCss);
 const NavBar = ({ onEventAdd  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "navBar",
+        className: (0, _navBarModuleCssDefault.default).navBar,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                className: "phrase",
+                className: (0, _navBarModuleCssDefault.default).phrase,
                 children: "Your TODO list"
             }, void 0, false, {
                 fileName: "src/NavBar/NavBar.tsx",
@@ -27195,7 +27201,7 @@ const NavBar = ({ onEventAdd  })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                className: "addButton",
+                className: (0, _navBarModuleCssDefault.default).addButton,
                 onClick: onEventAdd,
                 children: "Add event"
             }, void 0, false, {
@@ -27221,9 +27227,9 @@ $RefreshReg$(_c, "NavBar");
   window.$RefreshSig$ = prevRefreshSig;
 }
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./navBar.module.css":"6Mkxe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6Mkxe":[function(require,module,exports) {
-module.exports["navBar"] = `Wa7cIW_navBar`;
-module.exports["phrase"] = `Wa7cIW_phrase`;
-module.exports["addButton"] = `Wa7cIW_addButton`;
+module.exports["phrase"] = `s-wYeG_phrase`;
+module.exports["addButton"] = `s-wYeG_addButton`;
+module.exports["navBar"] = `s-wYeG_navBar`;
 
 },{}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -27398,9 +27404,9 @@ const ToDoList = ({ events , onChange , onClick , onChangeArea  })=>{
         }).map((event, inx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _eventDefault.default), {
                 onChange: ()=>onChange(event.text),
                 onClick: ()=>onClick(event.text),
-                onChangeArea: ()=>onChangeArea(),
+                onChangeArea: (ev)=>onChangeArea(inx, ev),
                 ...event
-            }, `event-${inx}-${event.text}`, false, {
+            }, `event-${inx}`, false, {
                 fileName: "src/ToDoList/ToDoList.tsx",
                 lineNumber: 35,
                 columnNumber: 15
@@ -27457,7 +27463,7 @@ const Event = (props)=>{
                 checked: props.checked
             }, void 0, false, {
                 fileName: "src/Event/Event.tsx",
-                lineNumber: 21,
+                lineNumber: 25,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -27465,7 +27471,7 @@ const Event = (props)=>{
                 onChange: props.onChangeArea
             }, void 0, false, {
                 fileName: "src/Event/Event.tsx",
-                lineNumber: 22,
+                lineNumber: 26,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27473,13 +27479,13 @@ const Event = (props)=>{
                 children: "delete"
             }, void 0, false, {
                 fileName: "src/Event/Event.tsx",
-                lineNumber: 23,
+                lineNumber: 27,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/Event/Event.tsx",
-        lineNumber: 20,
+        lineNumber: 24,
         columnNumber: 5
     }, undefined);
 };

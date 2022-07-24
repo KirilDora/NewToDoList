@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FormEvent} from "react";
 
 export const initialEvents: EventProps[] = [
   {checked:false, text: 'Do homework'},
@@ -12,10 +12,14 @@ export interface EventProps {
     text: string;
 }
 
-const Event = (props: EventProps & 
-  {onChange: () => void} &
-  {onClick: () => void} &
-  {onChangeArea: () => void}) => {
+type Props = EventProps &
+    {
+        onChange: () => void;
+        onClick: () => void;
+        onChangeArea: (ev: FormEvent) => void;
+    }
+
+const Event = (props: Props) => {
   return(
     <div>
       <input type="checkbox" onChange={props.onChange} checked={props.checked} />

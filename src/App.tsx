@@ -1,5 +1,5 @@
 import './App.css';
-import React, {FormEvent, ReactEventHandler, useCallback, useState} from "react";
+import React, {FormEvent, useCallback, useEffect, useState} from "react";
 import NavBar from './NavBar/NavBar';
 import ToDoList from './ToDoList/ToDoList';
 import {EventProps, initialEvents} from "./Event/Event";
@@ -7,6 +7,8 @@ import {EventProps, initialEvents} from "./Event/Event";
 
 export const App = () => {
     const [events, setEvents] = useState<EventProps[]>(initialEvents);
+
+    useEffect(() => console.log(events), [events]);
 
     const onAddEvent = useCallback(() => {
         const input = prompt("What you want to do?");
@@ -25,8 +27,10 @@ export const App = () => {
       setEvents(events.filter((ev)=>ev.text !== event));
     }
 
-    const onChangeArea = (event: string, e: FormEvent) => {
-      setEvents(events.map(ev => ev.text === event ? {...ev, text: e.target.value} : ev))
+    const onChangeArea = (inx: number, e: FormEvent) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      setEvents(events.map((ev, i) => i === inx ? {...ev, text: e.target.value} : ev))
     }
 
     return (
@@ -34,7 +38,7 @@ export const App = () => {
             <NavBar onEventAdd={onAddEvent}/>
             <ToDoList events={events} 
             onChange={onEventChange}
-            onChangeArea = {onChangeArea} 
+            onChangeArea ={onChangeArea}
             onClick={onDeleteEvent}/>
         </div>
   );

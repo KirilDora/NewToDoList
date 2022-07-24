@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import './navBar.module.css';
+import styles from './navBar.module.css';
 
 interface NavBarProps {
     onEventAdd: () => void;
@@ -8,9 +8,9 @@ interface NavBarProps {
 const NavBar: FC<NavBarProps> = ({ onEventAdd }) => {
 
   return (
-    <div className="navBar">
-      <h1 className="phrase">Your TODO list</h1>
-      <button className="addButton" onClick={onEventAdd}>Add event</button>
+    <div className={styles.navBar}>
+      <h1 className={styles.phrase}>Your TODO list</h1>
+      <button className={styles.addButton} onClick={onEventAdd}>Add event</button>
     </div>
   )
 }
